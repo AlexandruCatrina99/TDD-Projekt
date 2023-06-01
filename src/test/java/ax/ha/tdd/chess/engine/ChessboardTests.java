@@ -1,7 +1,6 @@
 package ax.ha.tdd.chess.engine;
 
-import ax.ha.tdd.chess.engine.pieces.ChessPieceStub;
-import ax.ha.tdd.chess.engine.pieces.PieceType;
+import ax.ha.tdd.chess.engine.pieces.King;
 import ax.ha.tdd.chess.engine.pieces.Queen;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -77,14 +76,14 @@ public class ChessboardTests {
     @Test
     public void fullboard_Kings_areInCorrectSpot() {
         final ChessboardImpl chessboard = ChessboardImpl.startingBoard();
-        Assertions.assertEquals(new ChessPieceStub(PieceType.KING, Color.BLACK), chessboard.getPieceAt(new Square(4, 0)));
-        Assertions.assertEquals(new ChessPieceStub(PieceType.KING, Color.WHITE), chessboard.getPieceAt(new Square(4, 7)));
+        Assertions.assertEquals(new King(Color.BLACK, new Square(4, 0)), chessboard.getPieceAt(new Square(4, 0)));
+        Assertions.assertEquals(new King(Color.WHITE, new Square(4, 7)), chessboard.getPieceAt(new Square(4, 7)));
     }
 
     @Test
     public void fullboard_Queens_areInCorrectSpot() {
         final ChessboardImpl chessboard = ChessboardImpl.startingBoard();
-        Assertions.assertEquals(new Queen(Color.BLACK,new Square(3,0)), chessboard.getPieceAt(new Square(3, 0)));
-        Assertions.assertEquals(new Queen(Color.WHITE,new Square(3,7)), chessboard.getPieceAt(new Square(3, 7)));
+        Assertions.assertEquals(new Queen(Color.BLACK, new Square(3, 0)), chessboard.getPieceAt(new Square(3, 0)));
+        Assertions.assertEquals(new Queen(Color.WHITE, new Square(3, 7)), chessboard.getPieceAt(new Square(3, 7)));
     }
 }
