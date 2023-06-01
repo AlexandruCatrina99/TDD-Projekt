@@ -28,46 +28,45 @@ public class Rook extends ChessPieceBase implements ChessPiece{
         for (int i = this.location.getX(); i>=0; i--){
             if (chessboard.getPieceAt(new Square(i, location.getY())) == null){
                 availableMoves.add(new Square(i, location.getY()));
-                continue;
             } else if (!chessboard.getPieceAt(new Square(i, location.getY())).getColor().equals(this.color)) {
                 availableMoves.add(new Square(i, location.getY()));
                 break;
             }
-            break;
+
         }
 
         //Go right
         for (int i = this.location.getX(); i<=7; i++){
             if (chessboard.getPieceAt(new Square(i, location.getY())) == null){
                 availableMoves.add(new Square(i, location.getY()));
-                continue;
+
             } else if (!chessboard.getPieceAt(new Square(i, location.getY())).getColor().equals(this.color)) {
                 availableMoves.add(new Square(i, location.getY()));
                 break;
             }
-            break;
+
         }
         //Go upp
         for (int i = this.location.getY(); i>=0; i--){
             if (chessboard.getPieceAt(new Square( location.getX(),i)) == null){
                 availableMoves.add(new Square( location.getX(),i));
-                continue;
+
             } else if (!chessboard.getPieceAt(new Square( location.getX(),i)).getColor().equals(this.color)) {
                 availableMoves.add(new Square( location.getX(),i));
                 break;
             }
-            break;
+
         }
         //Go upp
         for (int i = this.location.getY(); i<=7; i++){
             if (chessboard.getPieceAt(new Square( location.getX(),i)) == null){
                 availableMoves.add(new Square( location.getX(),i));
-                continue;
+
             } else if (!chessboard.getPieceAt(new Square( location.getX(),i)).getColor().equals(this.color)) {
                 availableMoves.add(new Square( location.getX(),i));
                 break;
             }
-            break;
+
         }
         return availableMoves;
     }

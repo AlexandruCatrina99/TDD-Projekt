@@ -27,15 +27,18 @@ public class Bishop extends ChessPieceBase implements ChessPiece {
         if (this.location.getX() <= 6 && this.location.getY() <= 6) {
             int x = this.location.getX();
             int y = this.location.getY();
+            x++;
+            y++;
             Square nextMoveRightDown = new Square(x, y);
             while (chessboard.getPieceAt(nextMoveRightDown) == null) {
-                x++;
-                y++;
+
                 if (x < 8 && y < 8) {
                     if (chessboard.getPieceAt(new Square(x, y)) == null || chessboard.getPieceAt(new Square(x, y)).getColor() != this.getColor()) {
                         nextMoveRightDown = new Square(x, y);
                         availableMoves.add(nextMoveRightDown);
                     }
+                    x++;
+                    y++;
 
                 } else break;
             }
@@ -43,15 +46,18 @@ public class Bishop extends ChessPieceBase implements ChessPiece {
         if (this.location.getX() <= 6 && this.location.getY() >= 1) {
             int x = this.location.getX();
             int y = this.location.getY();
+            x++;
+            y--;
             Square nextMoveRightUp = new Square(x, y);
             while (chessboard.getPieceAt(nextMoveRightUp) == null) {
-                x++;
-                y--;
+
                 if (x < 8 && y >= 0) {
                     if (chessboard.getPieceAt(new Square(x, y)) == null || chessboard.getPieceAt(new Square(x, y)).getColor() != this.getColor()) {
                         nextMoveRightUp = new Square(x, y);
                         availableMoves.add(nextMoveRightUp);
                     }
+                    x++;
+                    y--;
 
                 } else break;
             }
@@ -59,15 +65,18 @@ public class Bishop extends ChessPieceBase implements ChessPiece {
         if (this.location.getX() >= 1 && this.location.getY() >= 1) {
             int x = this.location.getX();
             int y = this.location.getY();
+            x--;
+            y--;
             Square nextMoveLeftUp = new Square(x, y);
             while (chessboard.getPieceAt(nextMoveLeftUp) == null) {
-                x--;
-                y--;
+
                 if (x >= 0 && y >= 0) {
                     if (chessboard.getPieceAt(new Square(x, y)) == null || chessboard.getPieceAt(new Square(x, y)).getColor() != this.getColor()) {
                         nextMoveLeftUp = new Square(x, y);
                         availableMoves.add(nextMoveLeftUp);
                     }
+                    x--;
+                    y--;
 
                 } else break;
             }
@@ -75,15 +84,18 @@ public class Bishop extends ChessPieceBase implements ChessPiece {
         if (this.location.getX() >= 1 && this.location.getY() <= 6) {
             int x = this.location.getX();
             int y = this.location.getY();
+            x--;
+            y++;
             Square nextMoveLeftDown = new Square(x, y);
             while (chessboard.getPieceAt(nextMoveLeftDown) == null) {
-                x--;
-                y++;
+
                 if (x >= 0 && y < 8) {
                     if (chessboard.getPieceAt(new Square(x, y)) == null || chessboard.getPieceAt(new Square(x, y)).getColor() != this.getColor()) {
                         nextMoveLeftDown = new Square(x, y);
                         availableMoves.add(nextMoveLeftDown);
                     }
+                    x--;
+                    y++;
 
                 } else break;
             }

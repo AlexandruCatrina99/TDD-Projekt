@@ -22,7 +22,7 @@ public class King extends ChessPieceBase implements ChessPiece {
         return false;
     }
 
-    private ArrayList<Square> availableMoves(Chessboard chessboard) {
+    public ArrayList<Square> availableMoves(Chessboard chessboard) {
         ArrayList<Square> availableMoves = new ArrayList<>();
         if (this.location.getX() > 0) {
             if (this.location.getY() < 7 && (chessboard.getPieceAt(new Square(this.location.getX() - 1, this.location.getY() + 1)) == null || chessboard.getPieceAt(new Square(this.location.getX() - 1, this.location.getY() + 1)).getColor() != this.color)) {
