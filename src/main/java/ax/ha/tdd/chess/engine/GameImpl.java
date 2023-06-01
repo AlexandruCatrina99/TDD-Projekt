@@ -37,7 +37,6 @@ public class GameImpl implements Game{
         //2. Check if the piece is allowed to move to the destination
 
         //3. If so, update board (and last move message), otherwise only update last move message to show that an illegal move was tried
-
         isNewGame = false;
         System.out.println("Player tried to perform move: " + move);
     }
