@@ -11,8 +11,7 @@ public class KnightTests {
 
     @Test
     public void testKnightsMoves(){
-        //Here's a lower level test, we just check that the internal logic of the pawn is correct.
-        //We should be allowed to move one step forward to an empty square
+
         Chessboard chessboard = new ChessboardImpl();
         Knight e4 = new Knight(Color.WHITE, new Square("e4"));
         assertTrue(e4.canMove(chessboard, new Square("c5")));
@@ -27,5 +26,14 @@ public class KnightTests {
         assertFalse(e4.canMove(chessboard, new Square("d3")));
         assertFalse(e4.canMove(chessboard, new Square("e2")));
         assertFalse(e4.canMove(chessboard, new Square("g4")));
+    }
+    @Test
+    public void testKnightsTakeMove(){
+
+        Chessboard chessboard =  ChessboardImpl.startingBoard();
+        Knight e4 = new Knight(Color.WHITE, new Square("e5"));
+        assertTrue(e4.canMove(chessboard, new Square("f7")));
+        assertTrue(e4.canMove(chessboard, new Square("d7")));
+
     }
 }
