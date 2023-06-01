@@ -48,6 +48,24 @@ public class PawnTests {
         Pawn e2 = new Pawn(Color.WHITE, new Square("e2"));
         assertTrue(e2.canMove(chessboard, new Square("e4")));
     }
+
+    @Test
+    public void testBlackPawnForwardOneStepUnblocked(){
+        //Here's a lower level test, we just check that the internal logic of the pawn is correct.
+        //We should be allowed to move one step forward to an empty square
+        Chessboard chessboard = new ChessboardImpl();
+        Pawn e2 = new Pawn(Color.BLACK, new Square("e7"));
+        assertTrue(e2.canMove(chessboard, new Square("e6")));
+    }
+
+    @Test
+    public void testBlackPawnForward2StepUnblockedASFristMove(){
+        //Here's a lower level test, we just check that the internal logic of the pawn is correct.
+        //We should be allowed to move one step forward to an empty square
+        Chessboard chessboard =  ChessboardImpl.startingBoard();
+        Pawn e2 = new Pawn(Color.BLACK, new Square("a7"));
+        assertTrue(e2.canMove(chessboard, new Square("a5")));
+    }
     @Test
     public void testDiagonalMoveNotWorkingIfEmptySquare(){
         //Here's a lower level test, we just check that the internal logic of the pawn is correct.
