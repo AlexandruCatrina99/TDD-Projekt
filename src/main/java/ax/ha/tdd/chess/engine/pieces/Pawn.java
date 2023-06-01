@@ -35,11 +35,11 @@ public class Pawn extends ChessPieceBase implements ChessPiece {
         }
         if (this.color == Color.BLACK) {
             // Check if pawn can take something at left
-            if (this.location.getX() != 0 && chessboard.getPieceAt(new Square(this.location.getX() - 1, this.location.getY() + 1)) != null) {
+            if (this.location.getX() != 0 && chessboard.getPieceAt(new Square(this.location.getX() - 1, this.location.getY() + 1)) != null && chessboard.getPieceAt(new Square(this.location.getX() - 1, this.location.getY() + 1)).getColor() == Color.WHITE) {
                 availableMoves.add(new Square(this.location.getX() - 1, this.location.getY() + 1));
             }
             // Check if pawn can take something at right
-            if (this.location.getX() != 7 && chessboard.getPieceAt(new Square(this.location.getX() + 1, this.location.getY() + 1)) != null) {
+            if (this.location.getX() != 7 && chessboard.getPieceAt(new Square(this.location.getX() + 1, this.location.getY() + 1)) != null && chessboard.getPieceAt(new Square(this.location.getX() + 1, this.location.getY() + 1)).getColor() == Color.WHITE) {
                 availableMoves.add(new Square(this.location.getX() + 1, this.location.getY() + 1));
             }
             if (this.location.getY() != 7 && chessboard.getPieceAt(new Square(this.location.getX(), this.location.getY() + 1)) == null) {
@@ -48,11 +48,11 @@ public class Pawn extends ChessPieceBase implements ChessPiece {
         }
         if (this.color == Color.WHITE) {
             // Check if pawn can take something at left
-            if (this.location.getX() != 0 && chessboard.getPieceAt(new Square(this.location.getX() - 1, this.location.getY() - 1)) != null) {
+            if (this.location.getX() != 0 && chessboard.getPieceAt(new Square(this.location.getX() - 1, this.location.getY() - 1)) != null && chessboard.getPieceAt(new Square(this.location.getX() - 1, this.location.getY() - 1)).getColor() == Color.BLACK) {
                 availableMoves.add(new Square(this.location.getX() - 1, this.location.getY() - 1));
             }
             // Check if pawn can take something at right
-            if (this.location.getX() != 7 && chessboard.getPieceAt(new Square(this.location.getX() + 1, this.location.getY() - 1)) != null) {
+            if (this.location.getX() != 7 && chessboard.getPieceAt(new Square(this.location.getX() + 1, this.location.getY() - 1)) != null && chessboard.getPieceAt(new Square(this.location.getX() + 1, this.location.getY() - 1)).getColor() == Color.BLACK) {
                 availableMoves.add(new Square(this.location.getX() + 1, this.location.getY() - 1));
             }
             if (this.location.getY() != 0 && chessboard.getPieceAt(new Square(this.location.getX(), this.location.getY() - 1)) == null) {

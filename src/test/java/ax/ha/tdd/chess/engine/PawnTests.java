@@ -74,4 +74,21 @@ public class PawnTests {
         Pawn e2 = new Pawn(Color.WHITE, new Square("e2"));
         assertFalse(e2.canMove(chessboard, new Square("f3")));
     }
+
+    @Test
+    public void testPawnCanTakeDiagonally(){
+        //Here's a lower level test, we just check that the internal logic of the pawn is correct.
+        //We should be allowed to move one step forward to an empty square
+        Chessboard chessboard =  ChessboardImpl.startingBoard();
+        Pawn e2 = new Pawn(Color.WHITE, new Square("e6"));
+        assertTrue(e2.canMove(chessboard, new Square("f7")));
+    }
+    @Test
+    public void testPawnCanNotTakeDiagonallySameColor(){
+        //Here's a lower level test, we just check that the internal logic of the pawn is correct.
+        //We should be allowed to move one step forward to an empty square
+        Chessboard chessboard =  ChessboardImpl.startingBoard();
+        Pawn e2 = new Pawn(Color.BLACK, new Square("e6"));
+        assertFalse(e2.canMove(chessboard, new Square("f7")));
+    }
 }
