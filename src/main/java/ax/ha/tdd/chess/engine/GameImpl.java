@@ -39,7 +39,14 @@ public class GameImpl implements Game {
     public void move(String move) {
         if (!isGameDone) {
             if (Objects.equals(move, "O-O")) {
-                if (this.turn == Color.WHITE && !hasWhiteKingMoved && !hasRightWhiteRookMoved) {
+                if (this.turn == Color.WHITE && !hasWhiteKingMoved && !hasRightWhiteRookMoved
+                        && !canOpponentTakeHere(new Square(4,7))
+                        && !canOpponentTakeHere(new Square(5,7))
+                        && !canOpponentTakeHere(new Square(6,7))
+                        && !canOpponentTakeHere(new Square(7,7))
+                        && board.getPieceAt(new Square(5,7))==null
+                        && board.getPieceAt(new Square(6,7))==null
+                ) {
                     King king = new King(Color.WHITE, new Square(7, 7));
                     Rook rook = new Rook(Color.WHITE, new Square(4, 7));
                     this.board.addPiece(king);
@@ -48,7 +55,14 @@ public class GameImpl implements Game {
                     hasRightWhiteRookMoved = true;
                     lastMove = move + " right castling";
                     endTurn();
-                } else if (this.turn == Color.BLACK && !hasBlackKingMoved && !hasRightBlackRookMoved) {
+                } else if (this.turn == Color.BLACK && !hasBlackKingMoved && !hasRightBlackRookMoved
+                        && !canOpponentTakeHere(new Square(4,0))
+                        && !canOpponentTakeHere(new Square(5,0))
+                        && !canOpponentTakeHere(new Square(6,0))
+                        && !canOpponentTakeHere(new Square(7,0))
+                        && board.getPieceAt(new Square(5,0))==null
+                        && board.getPieceAt(new Square(6,0))==null
+                ) {
                     King king = new King(Color.BLACK, new Square(7, 0));
                     Rook rook = new Rook(Color.BLACK, new Square(4, 0));
                     this.board.addPiece(king);
@@ -62,7 +76,16 @@ public class GameImpl implements Game {
                 }
 
             } else if (Objects.equals(move, "O-O-O")) {
-                if (this.turn == Color.WHITE && !hasWhiteKingMoved && !hasLeftWhiteRookMoved) {
+                if (this.turn == Color.WHITE && !hasWhiteKingMoved && !hasLeftWhiteRookMoved
+                        && !canOpponentTakeHere(new Square(0,7))
+                        && !canOpponentTakeHere(new Square(1,7))
+                        && !canOpponentTakeHere(new Square(2,7))
+                        && !canOpponentTakeHere(new Square(3,7))
+                        && !canOpponentTakeHere(new Square(4,7))
+                        && board.getPieceAt(new Square(1,7))==null
+                        && board.getPieceAt(new Square(2,7))==null
+                        && board.getPieceAt(new Square(3,7))==null
+                ) {
                     King king = new King(Color.WHITE, new Square(0, 7));
                     Rook rook = new Rook(Color.WHITE, new Square(4, 7));
                     this.board.addPiece(king);
@@ -72,7 +95,16 @@ public class GameImpl implements Game {
                     lastMove = move + " left castling";
                     endTurn();
 
-                } else if (this.turn == Color.BLACK && !hasBlackKingMoved && !hasLeftBlackRookMoved) {
+                } else if (this.turn == Color.BLACK && !hasBlackKingMoved && !hasLeftBlackRookMoved
+                        && !canOpponentTakeHere(new Square(0,0))
+                        && !canOpponentTakeHere(new Square(1,0))
+                        && !canOpponentTakeHere(new Square(2,0))
+                        && !canOpponentTakeHere(new Square(3,0))
+                        && !canOpponentTakeHere(new Square(4,0))
+                        && board.getPieceAt(new Square(1,0))==null
+                        && board.getPieceAt(new Square(2,0))==null
+                        && board.getPieceAt(new Square(3,0))==null
+                ) {
                     King king = new King(Color.BLACK, new Square(0, 0));
                     Rook rook = new Rook(Color.BLACK, new Square(4, 0));
                     this.board.addPiece(king);
@@ -135,6 +167,7 @@ public class GameImpl implements Game {
                                 }
                                 board.addPiece(new Rook(this.turn, destinationPosition));
                                 board.removePieceAt(piecePosition);
+                                this.lastMove= move;
                                 endTurn();
                             } else if (board.getPieceAt(piecePosition).getType() == PieceType.KING) {
                                 if (!canOpponentTakeHere(destinationPosition)) {
@@ -144,6 +177,7 @@ public class GameImpl implements Game {
                                     }
                                     board.addPiece(new King(this.turn, destinationPosition));
                                     board.removePieceAt(piecePosition);
+                                    this.lastMove= move;
                                     endTurn();
                                 } else {
                                     this.lastMove = "Can't go there with the KING, think again!";

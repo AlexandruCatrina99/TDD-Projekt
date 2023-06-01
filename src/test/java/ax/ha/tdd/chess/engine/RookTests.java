@@ -23,8 +23,15 @@ public class RookTests {
     public void testWhiteRookCanTakeOtherPiecesOfDifferentColor(){
 
         Chessboard chessboard =  ChessboardImpl.startingBoard();
-        Rook e2 = new Rook(Color.WHITE, new Square("d5"));
-        assertTrue(e2.canMove(chessboard, new Square("d7")));
-        assertFalse(e2.canMove(chessboard, new Square("d2")));
+        Rook d5 = new Rook(Color.WHITE, new Square("d5"));
+        assertTrue(d5.canMove(chessboard, new Square("d7")));
+        assertFalse(d5.canMove(chessboard, new Square("d2")));
+    }
+    @Test
+    public void testRookCanNotJumpOverSameColorPieces(){
+
+        Chessboard chessboard =  ChessboardImpl.startingBoard();
+        Rook a1 = (Rook) chessboard.getPieceAt(new Square("a1"));
+        assertFalse(a1.canMove(chessboard, new Square("a3")));
     }
 }
